@@ -28,8 +28,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 }
 console.log ( 'henri' +mongoURL);
 
-if (process.env.VCAP_SERVICES) {
-   var env = JSON.parse(process.env.VCAP_SERVICES);
+if (process.env.OPENSHIFT_NODEJS_PORT) {
+   
    db = mongoose.createConnection('mongodb://172.30.172.0:27017/sampledb');
 } else {
    db = mongoose.createConnection('localhost', 'pollsapp');
