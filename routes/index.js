@@ -26,11 +26,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
   }
 }
-console.log ( 'henri' +mongoURL);
+console.log ( 'henri :' +mongoURL);
+console.log ( 'henri2 :' +mongoURLLabel);
 
-if (process.env.OPENSHIFT_NODEJS_PORT) {
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
    
-   db = mongoose.createConnection('mongodb://172.30.172.0:27017/sampledb');
+   db = mongoose.createConnection(mongoURL, 'pollsapp');
 } else {
    db = mongoose.createConnection('localhost', 'pollsapp');
 }
