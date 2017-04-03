@@ -31,7 +31,7 @@ console.log ( 'henri2 :' +mongoURLLabel);
 
 //if (process.env.OPENSHIFT_MONGODB_DB_URL) {
    
-   db = mongoose.createConnection(mongoURL, 'pollsapp');
+   db = mongoose.createConnection(encodeURIComponent(mongoURL), 'pollsapp');
 //} else {
  //  db = mongoose.createConnection('localhost', 'pollsapp');
 //}
