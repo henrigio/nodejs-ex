@@ -33,7 +33,7 @@ console.log ( 'henri2 :' +mongoURLLabel);
 
 //if (process.env.OPENSHIFT_MONGODB_DB_URL) {
  //  db = mongoose.connect(mongoURLLabel,{user: mongoUser, pass: mongoPassword });
-  db = mongoose.createConnection(mongoURL,{uri_decode_auth: true}, 'pollsapp');
+  db = mongoose.createConnection(mongoURL,{uri_decode_auth: true});
 //} else {
  //  db = mongoose.createConnection('localhost', 'pollsapp');
 //}
