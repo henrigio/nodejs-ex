@@ -29,12 +29,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 console.log ( 'henri :' +mongoURL);
 console.log ( 'henri2 :' +mongoURLLabel);
 
-if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+//if (process.env.OPENSHIFT_MONGODB_DB_URL) {
    
    db = mongoose.createConnection(mongoURL, 'pollsapp');
-} else {
-   db = mongoose.createConnection('localhost', 'pollsapp');
-}
+//} else {
+ //  db = mongoose.createConnection('localhost', 'pollsapp');
+//}
 
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
