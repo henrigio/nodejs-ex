@@ -35,7 +35,7 @@ console.log ( 'henri2 :' +mongoURLLabel);
 //} else {
  //  db = mongoose.createConnection('localhost', 'pollsapp');
 //}
-
+console.log(db);
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
 var Poll = db.model('polls', PollSchema);
