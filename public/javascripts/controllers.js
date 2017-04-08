@@ -30,41 +30,12 @@ function PollItemCtrl($scope, $routeParams, socket, Poll) {
 			var voteObj = { poll_id: pollId, choice: choiceId };
 			socket.emit('send:vote', voteObj);
 		} else {
-			alert('You must select an option to vote for');
+			alert('Vous devez selectionner une option pour voter');
 		}
 	};
 }
-function PollCtrl($scope,socket,Poll) {
-// Controller for creating a new poll
-$scope.chat = function() {
-		
-	var mes=$scope.message;	
-		
-	socket.emit('send:chat', $scope.message);
-			
-			$scope.poll = {
-		question: mes
-			,
-		choices: [ { text: 'A' }, { text: 'B' }, { text: 'C' }]
-	};
-	$scope.message="";
-	// Create a new poll from the model
-	            var poll = $scope.poll;   
-				var newPoll = new Poll(poll);
-				
-				// Call API to save poll to the database
-				newPoll.$save(function(p, resp) {
-					if(!p.error) {
-						// If there is no error, redirect to the main view
-						$location.path('polls');
-					} else {
-						alert('Could not create poll');
-					}
-				});
-	
-	
-			
-}
+function PollCtrl($scope,Questions) {
+$scope.questions = Questions.query();
 }
 function PollNewCtrl($scope, $location, Poll) {
 	// Define an empty poll model object
@@ -105,14 +76,14 @@ function PollNewCtrl($scope, $location, Poll) {
 						// If there is no error, redirect to the main view
 						$location.path('polls');
 					} else {
-						alert('Could not create poll');
+						alert('Je ne peux pas créer un sondage');
 					}
 				});
 			} else {
-				alert('You must enter at least two choices');
+				alert('Vous devez enter au moins 2 choix');
 			}
 		} else {
-			alert('You must enter a question');
+			alert('Vous dever entrer un question');
 		}
 	};
 }

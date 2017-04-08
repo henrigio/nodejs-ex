@@ -6,6 +6,12 @@ angular.module('pollServices', ['ngResource']).
 			query: { method: 'GET', params: { pollId: 'polls' }, isArray: true }
 		})
 	}).
+		factory('Questions', function($resource) {
+		return $resource('questions', {}, {
+			// Use this method for getting a list of polls
+			query: { method: 'GET', isArray: true }
+		})
+	}).
 	factory('socket', function($rootScope) {
 		var socket = io.connect();
 		return {

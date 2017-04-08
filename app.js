@@ -32,6 +32,7 @@ app.get('/', routes.index);
 
 // MongoDB API Routes
 app.get('/polls/polls', routes.list);
+ app.get('/questions', routes.list2);
 app.get('/polls/:id', routes.poll);
 app.post('/polls', routes.create);
 app.post('/vote', routes.vote);

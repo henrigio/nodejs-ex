@@ -28,16 +28,16 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
   }
 }
-console.log ( 'henri :' +mongoURL);
-console.log ( 'henri2 :' +mongoURLLabel);
+//console.log ( 'henri :' +mongoURL);
+//console.log ( 'henri2 :' +mongoURLLabel);
 
 //if (process.env.OPENSHIFT_MONGODB_DB_URL) {
  //  db = mongoose.connect(mongoURLLabel,{user: mongoUser, pass: mongoPassword });
-  db = mongoose.createConnection(mongoURL,{uri_decode_auth: true});
+  //db = mongoose.createConnection(mongoURL,{uri_decode_auth: true});
 //} else {
- //  db = mongoose.createConnection('localhost', 'pollsapp');
+   db = mongoose.createConnection('localhost', 'pollsapp');
 //}
-console.log(db);
+//console.log(db);
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
 var Poll = db.model('polls', PollSchema);
@@ -55,6 +55,36 @@ exports.list = function(req, res) {
 	});
 };
 
+exports.list2 = function(req, res) {
+	var i=0
+	// Query Mongo for polls, just get back the question text
+	Poll.find({}, '',function(error, polls) {
+		console.log(polls);
+
+		var choices=[];
+     for (i=0;i<polls.length;i++)
+		{
+
+		var choix = polls[i].choices;
+        
+		for (j=0;j<choix.length;j++)
+		{
+			choices.push({ text: choix[j].text })
+		
+		}
+		}
+	
+		
+			// Build up poll object to save
+		var	pollObj = {question: 'global', choices: choices};
+	var poll = new Poll(pollObj);
+	
+		console.log(poll);	
+         poll.save();
+		
+		res.json(polls);
+	});
+};
 // JSON API for getting a single poll
 exports.poll = function(req, res) {
 	// Poll ID comes in the URL

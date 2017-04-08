@@ -1,12 +1,12 @@
 <div class="page-header">
-	<h1>Poll List</h1>
+	<h1>liste des sondages</h1>
 </div>
 <div class="row">
 	<div class="col-xs-5">
-		<a href="#/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New Poll</a>
+		<a href="#/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Nouveau sondage</a>
 	</div>
 	<div class="col-xs-7">
-		<input type="text" class="form-control" ng-model="query" placeholder="Search for a poll">
+		<input type="text" class="form-control" ng-model="query" placeholder="Recherche sondage">
 	</div>
 </div>
 <div class="row">
@@ -14,7 +14,7 @@
 </div>
 <div class="row" ng-switch on="polls.length">
 	<ul ng-switch-when="0">
-		<li><em>No polls in databases. Would you like to <a href="#/new">create one</a>?</li>
+		<li><em>Pas de sondage dans la base voulez vous en créer un <a href="#/new">Création sondage</a>?</li>
 	</ul>
 	<ul ng-switch-default>
 		<li ng-repeat="poll in polls | filter:query">
